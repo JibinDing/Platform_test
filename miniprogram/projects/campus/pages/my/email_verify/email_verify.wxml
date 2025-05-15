@@ -1,0 +1,16 @@
+<view class="form-box shadow margin-top">
+  <view class="form-group">
+    <view class="title must">高校邮箱</view>
+    <input type="text" placeholder="请输入学校邮箱" model:value="{{email}}" />
+  </view>
+
+  <view class="form-group">
+    <view class="title must">验证码</view>
+    <input type="text" placeholder="请输入邮箱验证码" model:value="{{code}}" />
+  </view>
+
+  <view class="form-button">
+    <button type="primary" bindtap="sendCode">发送验证码</button>
+    <button type="primary" bindtap="verifyCode">提交验证</button>
+  </view>
+</view>

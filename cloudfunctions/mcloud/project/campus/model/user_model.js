@@ -21,7 +21,10 @@ UserModel.DB_STRUCTURE = {
 
 	USER_NAME: 'string|false|comment=用户昵称',
 	USER_MOBILE: 'string|false|comment=联系电话',
-	USER_PIC: 'string|false|comment=头像',
+    USER_PIC: 'string|false|comment=头像',
+    USER_EMAIL: 'string|false|comment=邮箱地址',
+    USER_EMAIL_VERIFY: 'int|true|default=0|comment=邮箱是否认证 0=未认证 1=已认证',
+
 
 	USER_FORMS: 'array|true|default=[]',
 	USER_OBJ: 'object|true|default={}',

@@ -54,6 +54,16 @@
 				</view>
 			</view>
 
+            <!-- 进入邮箱验证页面 -->
+        <view wx:if="{{user && user.USER_STATUS != 9}}" class="item arrow" bindtap="url" data-url="../email_verify/email_verify">
+            <view class="content">
+                <text class="icon-mail text-blue"></text>
+                <text class="text-black">高校邮箱认证</text>
+                <text class="text-grey text-sm margin-left-sm">
+                {{user.USER_EMAIL_VERIFY == 1 ? '已认证' : '未认证'}}
+                </text>
+            </view>
+        </view>
 
 			<view class="item arrow" bindtap="url" data-url="../../about/index/about_index?key=SETUP_CONTENT_ABOUT">
 				<view class="content">
