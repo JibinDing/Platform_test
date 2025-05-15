@@ -12,6 +12,6 @@
 	<view wx:if="{{formOrderFocus}}" class="hint-desc error">{{formOrderFocus}}</view>-->
 
 
-	<cmpt-form-show id="cmpt-form" mark="cmpt-form" isCacheMatch="{{false}}" fields="{{fields}}" forms="{{formForms}}" isDefMatch="{{id?false:true}}">
+	<cmpt-form-show id="cmpt-form" mark="cmpt-form" isCacheMatch="{{false}}" fields="{{fields}}" forms="{{formForms}}" isDefMatch="{{id?false:true}}"> checkPic="{{false}}"
 	</cmpt-form-show>
 </view>

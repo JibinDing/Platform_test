@@ -53,15 +53,47 @@ class LeaveService extends BaseProjectService {
 		this.AppError('[校园圈]该功能暂不开放，如有需要请加作者微信：cclinux0730');
 	}
 
-	/** 插入 */
-	async insertLeave(userId, {
-		cateId,
-		cateName,
-		order,
-		forms
-	}) {
-		this.AppError('[校园圈]该功能暂不开放，如有需要请加作者微信：cclinux0730');
-	}
+    async insertLeave(userId, {
+        cateId,
+        cateName,
+        order,
+        forms
+    }) {
+        try {
+            const city = this._clientIPInfo?.city || '未定位';
+            const timestamp = this._timestamp;
+    
+            const data = {
+                LEAVE_CATE_ID: cateId,
+                LEAVE_CATE_NAME: cateName,
+                LEAVE_ORDER: order || 9999,
+                LEAVE_OBJ: forms,
+                LEAVE_USER_ID: userId,
+                LEAVE_CITY: city,
+                LEAVE_ADD_TIME: timestamp,
+                LEAVE_DAY: timeUtil.time('Y-M-D'),
+                LEAVE_STATUS: 1,
+                LEAVE_VIEW_CNT: 0,
+                LEAVE_LIKE_CNT: 0,
+                LEAVE_FAV_CNT: 0,
+                LEAVE_COMMENT_CNT: 0
+            };
+    
+            const res = await LeaveModel.insert(data);
+            return {
+                code: 0,
+                msg: '发布成功',
+                data: res
+            };
+    
+        } catch (err) {
+            console.error('insertLeave error:', err);
+            this.AppError('发布失败，请联系管理员处理', 500);
+        }
+    }
+    
+
+
 
 	/** 修改 */
 	async editLeave(userId, {

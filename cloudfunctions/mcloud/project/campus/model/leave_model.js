@@ -40,7 +40,8 @@ LeaveModel.DB_STRUCTURE = {
 	LEAVE_LIKE_LIST: 'array|true|default=[]',
 	LEAVE_COMMENT_CNT: 'int|true|default=0',
 
-	LEAVE_QR: 'string|false',
+    LEAVE_QR: 'string|false',
+    LEAVE_CITY: 'string|false|comment=城市名',
 
 	LEAVE_ADD_TIME: 'int|true',
 	LEAVE_EDIT_TIME: 'int|true',

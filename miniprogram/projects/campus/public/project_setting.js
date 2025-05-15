@@ -76,7 +76,7 @@ module.exports = { //campus
 		{ mark: 'poster', title: '联系人', type: 'text', must: true },
 		{ mark: 'tel', title: '电话', type: 'text', must: true },
 		{ mark: 'wx', title: '微信', type: 'text', must: false },
-		{ mark: 'pic', title: '物品图片', type: 'image', min: 0, max: 8, must: true }
+		{ mark: 'pic', title: '物品图片', type: 'image', min: 0, max: 8, must: false }
 	],
 
 	LEAVE_NAME: '闲置',
@@ -97,7 +97,7 @@ module.exports = { //campus
 		{ mark: 'poster', title: '联系人', type: 'text', must: true },
 		{ mark: 'tel', title: '电话', type: 'text', must: true },
 		{ mark: 'wx', title: '微信', type: 'text', must: false },
-		{ mark: 'pic', title: '物品图片', type: 'image', min: 0, max: 8, must: true }
+		{ mark: 'pic', title: '物品图片', type: 'image', min: 0, max: 8, must: false }
 	],
 
 	COMMENT_NAME: '评论',
