@@ -1,6 +1,13 @@
 <view class="top">
 	<image mode="widthFix" src="../../../images/home.jpg" class="loading" />
 </view>
+<view class="city-bar" bindtap="onCityTap">
+  <text class="icon-dizhi text-grey"></text>
+  <text class="city-name">{{curCity || '选择城市'}}</text>
+  <text class="icon-unfold"></text>
+</view>
+<view style="height: 90rpx;"></view>
+
 <view class="main">
 	<view class="list">
 		<view class="item shadow-project" bindtap="url" data-url="../../board/index/board_index">
@@ -10,7 +17,7 @@
 
 		<view class="item shadow-project" bindtap="url" data-url="../../lost/index/lost_index">
 			<image mode="aspectFill" src="../../../images/menu/lost.png" />
-			<view class="title">失物招领</view>
+			<view class="title">线下组局</view>
 		</view>
 
 		<view class="item shadow-project" bindtap="url" data-url="../../job/index/job_index">
@@ -24,12 +31,12 @@
 
 		<view class="item shadow-project" bindtap="url" data-type="relaunch" data-url="../../my/index/my_index">
 			<image mode="aspectFill" src="../../../images/menu/my.png" />
-			<view class="title">个人中心</view>
+			<view class="title">学术辅导</view>
 		</view>
 
 		<view class="item shadow-project" bindtap="url" data-url="../../about/index/about_index?key=SETUP_CONTENT_ABOUT">
 			<image mode="aspectFill" src="../../../images/menu/about.png" />
-			<view class="title">关于我们</view>
+			<view class="title">房源转租</view>
 		</view>
 
 	</view>

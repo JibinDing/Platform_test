@@ -9,7 +9,8 @@ Page({
 	 */
 	data: {
 		cur: 'hot',
-		cateList:ProjectSetting.ACTIVITY_CATE
+        cateList:ProjectSetting.ACTIVITY_CATE,
+        curCity: wx.getStorageSync('curCity') || ''
 	},
 
 	/**
@@ -76,5 +77,18 @@ Page({
 	 */
 	onShareAppMessage: function () {
 
-	},
+    },
+    
+    onCityTap: function () {
+        wx.showActionSheet({
+          itemList: ['伦敦', '伯明翰', '曼彻斯特', '爱丁堡'],
+          success: res => {
+            const cityList = ['伦敦', '伯明翰', '曼彻斯特', '爱丁堡'];
+            const selected = cityList[res.tapIndex];
+            this.setData({ curCity: selected });
+            wx.setStorageSync('curCity', selected);
+          }
+        });
+      },
+      
 })

@@ -51,3 +51,16 @@ page {
 	font-size: 28rpx;
 	margin-top: 10rpx;
 }
+
+.city-bar {
+    display: flex;
+    align-items: center;
+    padding: 20rpx;
+    font-size: 26rpx;
+    color: #333;
+  }
+  .city-bar .city-name {
+    margin: 0 10rpx;
+    font-weight: bold;
+  }
+  
