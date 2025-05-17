@@ -48,10 +48,21 @@ class LeaveService extends BaseProjectService {
 		this.AppError('[校园圈]该功能暂不开放，如有需要请加作者微信：cclinux0730');
 	}
 
-	/** 删除 */
-	async delLeave(userId, id) {
-		this.AppError('[校园圈]该功能暂不开放，如有需要请加作者微信：cclinux0730');
-	}
+/** 删除 */
+async delLeave(userId, id) {
+    // 获取该二手信息
+    const leave = await LeaveModel.getOne(id);
+    if (!leave) this.AppError('记录不存在');
+  
+    // 判断是否为本人发布
+    if (leave.LEAVE_USER_ID !== userId) this.AppError('无权限删除该记录');
+  
+    // 删除记录
+    await LeaveModel.del(id);
+  
+    return { code: 0, msg: '删除成功' };
+  }
+  
 
     async insertLeave(userId, {
         cateId,
