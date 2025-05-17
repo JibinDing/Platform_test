@@ -64,44 +64,54 @@ async delLeave(userId, id) {
   }
   
 
-    async insertLeave(userId, {
-        cateId,
-        cateName,
-        order,
-        forms
-    }) {
-        try {
-            const city = this._clientIPInfo?.city || '未定位';
-            const timestamp = this._timestamp;
-    
-            const data = {
-                LEAVE_CATE_ID: cateId,
-                LEAVE_CATE_NAME: cateName,
-                LEAVE_ORDER: order || 9999,
-                LEAVE_OBJ: forms,
-                LEAVE_USER_ID: userId,
-                LEAVE_CITY: city,
-                LEAVE_ADD_TIME: timestamp,
-                LEAVE_DAY: timeUtil.time('Y-M-D'),
-                LEAVE_STATUS: 1,
-                LEAVE_VIEW_CNT: 0,
-                LEAVE_LIKE_CNT: 0,
-                LEAVE_FAV_CNT: 0,
-                LEAVE_COMMENT_CNT: 0
-            };
-    
-            const res = await LeaveModel.insert(data);
-            return {
-                code: 0,
-                msg: '发布成功',
-                data: res
-            };
-    
-        } catch (err) {
-            console.error('insertLeave error:', err);
-            this.AppError('发布失败，请联系管理员处理', 500);
+  async insertLeave(userId, {
+    cateId,
+    cateName,
+    order,
+    forms
+  }) {
+    try {
+      const city = this._clientIPInfo?.city || '未定位';
+      const timestamp = this._timestamp;
+  
+      // 提取核心字段放入 OBJ
+      const obj = {};
+      for (const field of forms) {
+        if (['title', 'price', 'poster', 'tel', 'wx', 'desc', 'pic'].includes(field.mark)) {
+          obj[field.mark] = field.val;
         }
+      }
+  
+      const data = {
+        LEAVE_CATE_ID: cateId,
+        LEAVE_CATE_NAME: cateName,
+        LEAVE_ORDER: order || 9999,
+        LEAVE_FORMS: forms,
+        LEAVE_OBJ: obj,
+        LEAVE_USER_ID: userId,
+        LEAVE_CITY: city,
+        LEAVE_ADD_TIME: timestamp,
+        LEAVE_DAY: timeUtil.time('Y-M-D'),
+        LEAVE_STATUS: 1,
+        LEAVE_VIEW_CNT: 0,
+        LEAVE_LIKE_CNT: 0,
+        LEAVE_FAV_CNT: 0,
+        LEAVE_COMMENT_CNT: 0
+      };
+  
+      const res = await LeaveModel.insert(data);
+      return {
+        code: 0,
+        msg: '发布成功',
+        data: res
+      };
+  
+    } catch (err) {
+      console.error('insertLeave error:', err);
+      this.AppError('发布失败，请联系管理员处理', 500);
     }
+  }
+  
     
 
 
